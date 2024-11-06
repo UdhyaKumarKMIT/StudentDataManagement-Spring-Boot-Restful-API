@@ -73,6 +73,12 @@ public class StudentService {
                 .filter(student -> student.getMarks() <= mark)
                 .collect(Collectors.toList());
     }
+    public List<Student> getStudentsByMarkBetween(double minMark, double maxMark) {
+        return studentRepository.values().stream()
+                .filter(student -> student.getMarks() >= minMark && student.getMarks() <= maxMark)
+                .collect(Collectors.toList());
+    }
+
 
     public List<Student> getStudentByPaid() {
         return studentRepository.values().stream()

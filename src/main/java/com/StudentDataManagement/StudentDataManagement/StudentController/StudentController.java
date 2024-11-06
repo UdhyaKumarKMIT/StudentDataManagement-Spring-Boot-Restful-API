@@ -67,16 +67,22 @@ public class StudentController {
     }
 
 
-    @GetMapping("/marks/gt/{mark}")
+    @GetMapping("/marks/greaterthan/{mark}")
     public ResponseEntity<List<Student>> getStudentsWithMarksGreaterThan(@PathVariable double mark) {
         List<Student> students = studentService.getStudentsByMarkGreaterThan(mark);
 
         return ResponseEntity.ok(students);
     }
 
-    @GetMapping("/marks/lt/{mark}")
+    @GetMapping("/marks/lesserthan/{mark}")
     public ResponseEntity<List<Student>> getStudentsWithMarksLessThan(@PathVariable double mark) {
         List<Student> students = studentService.getStudentsByMarkLessThan(mark);
+        return ResponseEntity.ok(students);
+    }
+
+    @GetMapping("/marks/between/{minMark}/{maxMark}")
+    public ResponseEntity<List<Student>> getStudentsWithMarksBetween(@PathVariable double minMark, @PathVariable double maxMark) {
+        List<Student> students = studentService.getStudentsByMarkBetween(minMark, maxMark);
         return ResponseEntity.ok(students);
     }
 
