@@ -64,13 +64,13 @@ public class StudentService {
 
     public List<Student> getStudentsByMarkGreaterThan(double mark) {
         return studentRepository.values().stream()
-                .filter(student -> student.getMarks() >= mark)
+                .filter(student -> student.getMarks() > mark)
                 .collect(Collectors.toList());
     }
 
     public List<Student> getStudentsByMarkLessThan(double mark) {
         return studentRepository.values().stream()
-                .filter(student -> student.getMarks() <= mark)
+                .filter(student -> student.getMarks() < mark)
                 .collect(Collectors.toList());
     }
     public List<Student> getStudentsByMarkBetween(double minMark, double maxMark) {
