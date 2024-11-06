@@ -2,6 +2,7 @@ package com.StudentDataManagement.StudentDataManagement.StudentController;
 
 import com.StudentDataManagement.StudentDataManagement.StudentService.StudentService;
 import com.StudentDataManagement.StudentDataManagement.Entity.Student;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,19 +36,19 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> addStudent(@Valid @RequestBody Student student) {
         Student createdStudent = studentService.addStudent(student);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdStudent);
     }
 
     @PostMapping("/bulk")
-    public ResponseEntity<List<Student>> addStudents(@RequestBody List<Student> students) {
+    public ResponseEntity<List<Student>> addStudents(@Valid @RequestBody List<Student> students) {
         List<Student> addedStudents = studentService.addStudents(students);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedStudents);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable Integer id, @RequestBody Student updatedStudent) {
+    public ResponseEntity<Student> updateStudent(@PathVariable Integer id, @Valid @RequestBody Student updatedStudent) {
         Optional<Student> student = studentService.updateStudent(id, updatedStudent);
         return student.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());

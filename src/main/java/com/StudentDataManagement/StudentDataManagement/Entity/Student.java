@@ -4,10 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Student {
@@ -27,6 +24,7 @@ public class Student {
     private String course;
 
     @Min(value = 0, message = "Marks must be non-negative")
+    @Max(value = 100,message = "Marks can not exceed 100")
     private Double marks;
 
     private Boolean feesPaid;
