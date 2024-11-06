@@ -1,8 +1,4 @@
-Here’s a sample `README.md` file for your **Student Data Management API** using Spring Boot with Swagger integration:
-
----
-
-# Student Data Management API
+# **Student Data Management API** using Sprint Boot with Swagger UI
 
 ## Description
 
@@ -18,8 +14,6 @@ This project provides a simple RESTful API for managing student profiles, marks,
 
 - Java
 - Spring Boot
-- Spring Data JPA
-- MySQL (or any database of your choice)
 - Swagger for API documentation
 
 ## Setup and Run
@@ -32,34 +26,14 @@ Clone the repository using the following Git command:
 git clone https://github.com/your-username/student-data-management-api.git
 ```
 
-### Step 2: Configure Database Connection
-
-Open `src/main/resources/application.properties` (or `application.yml` if using YAML) and configure your database details:
-
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/student_db
-spring.datasource.username=root
-spring.datasource.password=root_password
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+### Step 2: Check if your JDK version is {}  for the project
+if not upgrade your JDK 
 ```
 
-Make sure to replace `student_db`, `root`, and `root_password` with your actual database name, username, and password.
 
-### Step 3: Install Dependencies
+### Step 3: Run the Application
 
-If using **Maven** as the build tool, navigate to the project directory in the terminal and run the following command to install the required dependencies:
-
-```bash
-mvn clean install
-```
-
-### Step 4: Run the Application
-
-You can run the application directly from your IDE (e.g., IntelliJ IDEA) by running the `main` method in the `StudentDataManagementApplication.java` class.
+You can run the application directly from your IDE (IntelliJ IDEA) by running the `main` method in the `StudentDataManagementApplication.java` class.
 
 Alternatively, run the following Maven command:
 
@@ -83,6 +57,8 @@ Once the application is running, you can open the Swagger UI to see and test all
 
 ### Step 6: Testing Endpoints
 
+Select Endpoint which you want to test and click Try this , provide the inputs and click execute.
+
 Swagger UI provides a simple interface to test the API. You can click on any endpoint to expand it and see options to:
 
 - **Execute**: Send a request to the endpoint.
@@ -96,29 +72,6 @@ Here are some sample endpoints that you can test:
 - **PUT /students/{id}**: Update a student profile.
 - **DELETE /students/{id}**: Delete a student profile.
 
-## Project Structure
-
-```
-student-data-management-api/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── com/
-│   │   │   │   ├── example/
-│   │   │   │   │   ├── controller/
-│   │   │   │   │   ├── model/
-│   │   │   │   │   ├── repository/
-│   │   │   │   │   ├── service/
-│   │   │   ├── StudentDataManagementApplication.java
-│   ├── resources/
-│   │   ├── application.properties
-└── pom.xml
-```
-
-- **controller/**: Contains the REST controller classes to manage student data.
-- **model/**: Contains entity classes representing the student profiles, marks, and fees.
-- **repository/**: Contains JPA repositories for CRUD operations.
-- **service/**: Contains service classes to handle business logic.
 
 ## Example Endpoints
 
