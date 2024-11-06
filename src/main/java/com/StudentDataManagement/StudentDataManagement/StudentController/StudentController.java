@@ -1,13 +1,13 @@
 package com.StudentDataManagement.StudentDataManagement.StudentController;
+
 import com.StudentDataManagement.StudentDataManagement.StudentService.StudentService;
 import com.StudentDataManagement.StudentDataManagement.Entity.Student;
-       
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.http.HttpStatus;
-        import org.springframework.http.ResponseEntity;
-        import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-        import java.util.Collection;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,13 +22,11 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    //Get all the student details
     @GetMapping
     public ResponseEntity<Collection<Student>> getAllStudents() {
         return ResponseEntity.ok(studentService.getAllStudents());
     }
 
-    // Get Specific Student details by id
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Integer id) {
         Optional<Student> student = studentService.getStudentById(id);
@@ -36,19 +34,18 @@ public class StudentController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @PostMapping // This handles POST requests to /students
+    @PostMapping
     public ResponseEntity<Student> addStudent(@RequestBody Student student) {
         Student createdStudent = studentService.addStudent(student);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdStudent);
     }
 
     @PostMapping("/bulk")
-    public ResponseEntity<Student[]> addStudents(@RequestBody Student[] students) {
-        Student[] addedStudents = studentService.addStudents(students);
+    public ResponseEntity<List<Student>> addStudents(@RequestBody List<Student> students) {
+        List<Student> addedStudents = studentService.addStudents(students);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedStudents);
     }
 
-    // PUT /students/{id} - Update an existing student by ID
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Integer id, @RequestBody Student updatedStudent) {
         Optional<Student> student = studentService.updateStudent(id, updatedStudent);
@@ -56,7 +53,6 @@ public class StudentController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    // DELETE /students/{id} - Delete a student profile
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Integer id) {
         if (studentService.deleteStudent(id)) {
@@ -66,38 +62,28 @@ public class StudentController {
         }
     }
 
-
     @GetMapping("/marks/greaterthan/{mark}")
     public ResponseEntity<List<Student>> getStudentsWithMarksGreaterThan(@PathVariable double mark) {
-        List<Student> students = studentService.getStudentsByMarkGreaterThan(mark);
-
-        return ResponseEntity.ok(students);
+        return ResponseEntity.ok(studentService.getStudentsByMarkGreaterThan(mark));
     }
 
     @GetMapping("/marks/lesserthan/{mark}")
     public ResponseEntity<List<Student>> getStudentsWithMarksLessThan(@PathVariable double mark) {
-        List<Student> students = studentService.getStudentsByMarkLessThan(mark);
-        return ResponseEntity.ok(students);
+        return ResponseEntity.ok(studentService.getStudentsByMarkLessThan(mark));
     }
 
     @GetMapping("/marks/between/{minMark}/{maxMark}")
     public ResponseEntity<List<Student>> getStudentsWithMarksBetween(@PathVariable double minMark, @PathVariable double maxMark) {
-        List<Student> students = studentService.getStudentsByMarkBetween(minMark, maxMark);
-        return ResponseEntity.ok(students);
+        return ResponseEntity.ok(studentService.getStudentsByMarkBetween(minMark, maxMark));
     }
 
     @GetMapping("/fees/paid")
-    public ResponseEntity<List<Student>> getStudentByPaid()
-    {
-        List<Student> students = studentService.getStudentByPaid();
-        System.out.println("Calling Fees Paid");
-        return ResponseEntity.ok(students);
-    }
-    @GetMapping("/fees/notpaid")
-    public ResponseEntity<List<Student>> getStudentByNotPaid()
-    {
-        List<Student> students = studentService.getStudentByNotPaid();
-        return ResponseEntity.ok(students);
+    public ResponseEntity<List<Student>> getStudentByPaid() {
+        return ResponseEntity.ok(studentService.getStudentByPaid());
     }
 
+    @GetMapping("/fees/notpaid")
+    public ResponseEntity<List<Student>> getStudentByNotPaid() {
+        return ResponseEntity.ok(studentService.getStudentByNotPaid());
+    }
 }

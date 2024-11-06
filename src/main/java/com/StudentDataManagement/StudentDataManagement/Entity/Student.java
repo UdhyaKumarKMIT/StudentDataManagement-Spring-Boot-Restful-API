@@ -1,14 +1,34 @@
 package com.StudentDataManagement.StudentDataManagement.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Student {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotNull(message = "Name cannot be null")
+    @Size(min = 1, message = "Name cannot be empty")
     private String name;
+
+    @Positive(message = "Age must be a positive integer")
     private Integer age;
+
+    @NotNull(message = "Course cannot be null")
     private String course;
+
+    @Min(value = 0, message = "Marks must be non-negative")
     private Double marks;
+
     private Boolean feesPaid;
 
 
