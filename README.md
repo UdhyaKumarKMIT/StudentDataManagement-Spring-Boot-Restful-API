@@ -248,7 +248,7 @@ This will open an interactive Swagger UI page with all available endpoints.
     {
       "name": "Rohit",
       "age": 22,
-      "course": "Engi. Physics",
+      "course": "Engineering Physics",
       "marks": 46,
       "feesPaid": false
     },
@@ -366,27 +366,38 @@ This will open an interactive Swagger UI page with all available endpoints.
 
 ## Additional API Endpoints
 
-1. **GET /students/marks/lesserthan/{mark}**
+1. **GET /students/top/{n}**
+   - **Method**: GET
+   - **Endpoint**: `/students/top/{n}`
+   - **Response**: Fetches Top n scorers.
+
+2. **GET /students/marks/lesserthan/{mark}**
    - **Method**: GET
    - **Endpoint**: `/students/marks/lesserthan/{mark}`
    - **Response**: Fetches student who scored less than specified mark(strictly lesser).
 
-2. **GET /students/marks/greaterthan/{mark}**
+3. **GET /students/marks/greaterthan/{mark}**
    - **Method**: GET
    - **Endpoint**: `/students/marks/greaterthan/{mark}`
    - **Response**: Fetches student who scored more than specified mark(strictly greater).
 
-3. **GET /students/marks/between/{minMark}/{maxMark}**
+4. **GET /students/marks/between/{minMark}/{maxMark}**
    - **Method**: GET
    - **Endpoint**: `/students/marks/between/{minMark}/{maxMark}`
    - **Response**: Fetches student who scored between minMark and maxMark.
 
-4. **GET /students/fees/paid**
+5. **GET /students/fees/paid**
    - **Method**: GET
    - **Endpoint**: `/students/fees/paid`
    - **Response**: Fetches student who has paid fees.
 
-5. **GET /students/fees/notpaid**
+6. **GET /students/fees/notpaid**
    - **Method**: GET
    - **Endpoint**: `/students/fees/notpaid`
    - **Response**: Fetches student who has not paid fees.
+
+7. **GET /students/course**
+   - **Method**: GET
+   - **Endpoint**: `/students/course`
+   - **Response**: Retrieves Unique list of courses.
+
