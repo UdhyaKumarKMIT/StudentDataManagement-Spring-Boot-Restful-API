@@ -2,16 +2,18 @@
 
 This project provides a simple RESTful API for managing student profiles, marks, and fees. It uses Spring Boot for the backend and integrates **Swagger UI** for easy API documentation and testing.
 
-## Developer
+## Developer 👨‍💻
 
 👨‍💻 **Developer**: Udhya Kumar K.  
 🏢 **Department**: Department of Computer Technology  
 
-🌐**View my profile**: [UdhyaKumarKMIT](https://github.com/UdhyaKumarKMIT)  
-💻**Leetcode**: [udhyak2004](https://leetcode.com/u/udhyak2004/)  
+🌐 **View my profile**: [UdhyaKumarKMIT](https://github.com/UdhyaKumarKMIT)  
+💻 **Leetcode**: [udhyak2004](https://leetcode.com/u/udhyak2004/)  
 
 ✉️ **Email**: udhyak2004@gmail.com  
 📞 **Phone**: +91 9150653370
+
+---
 
 ## Prerequisites
 - **Java Version**: 1.8.0_401
@@ -19,10 +21,14 @@ This project provides a simple RESTful API for managing student profiles, marks,
 - **Spring Boot Version**: v3.3.5
 - **IDE**: IntelliJ IDEA
 
+---
+
 ## Technologies Used
 - Java
 - Spring Boot
 - Swagger UI
+
+---
 
 ## Student Data Fields
 
@@ -33,6 +39,8 @@ This project provides a simple RESTful API for managing student profiles, marks,
 - `marks` (int): Between 0 and 100 (inclusive)
 - `feesPaid` (boolean): Valid boolean
 
+---
+
 ## Setup and Run
 
 ### Step 1: Clone the Repository
@@ -41,8 +49,9 @@ This project provides a simple RESTful API for managing student profiles, marks,
 git clone https://github.com/UdhyaKumarKMIT/StudentDataManagement-Spring-Boot-Restful-API.git
 ```
 
-### Step 2: Verify JDK and Spring Boot Versions
-Ensure your JDK is updated to version 23 and Spring Boot version is set to v3.3.5.
+### Step 2: Check if your JDK version is suitable for the running the  project
+If not upgrade your JDK to JDK 23 and Spring Boot version V3.3.5.
+Ensure that you have all dependencies installed.
 
 ### Step 3: Run the Application
 
@@ -51,7 +60,7 @@ You can run the application directly from your IDE (IntelliJ IDEA) by running th
 1. Navigate to `StudentDataManagementApplication.java`.
 2. Press the run ▶️ button or use `Shift + F10` to run.
 
-The application will start, and you can access the API and Swagger UI as follows.
+The application will start running ...
 
 ### Step 4: Access Swagger UI
 
@@ -61,26 +70,24 @@ Once the application is running, open a web browser and enter:
 
 This will open an interactive Swagger UI page with all available endpoints.
 
-### Step 5: Testing Endpoints
-
-Select an endpoint you wish to test in Swagger and click "Try it out."
-
-# API Testing Endpoints
 ---
 
-### 1. GET /students
+## API Endpoints
+---
+
+### 1. **GET /students**
 
 - **Method**: GET
 - **Endpoint**: `/students`
 - **Response**: List of all students in the database.
 
-### 2. GET /students/{id}
+### 2. **GET /students/{id}**
 
 - **Method**: GET
 - **Endpoint**: `/students/{id}`
 - **Response**: Retrieves a specific student by ID.
 
-### 3. POST /students
+### 3. **POST /students**
 
 - **Method**: POST
 - **Endpoint**: `/students`
@@ -96,7 +103,193 @@ Select an endpoint you wish to test in Swagger and click "Try it out."
   ```
 - **Response**: Creates a new student record with an auto-generated `id`.
 
-### 4. PUT /students/{id}
+### 4. **POST /students/bulk**
+
+- **Method**: POST
+- **Endpoint**: `/students/bulk`
+- **Request Body**:
+  ```json
+  [
+    {
+      "name": "Udhya Kumar K",
+      "age": 19,
+      "course": "Computer Science",
+      "marks": 100,
+      "feesPaid": true
+    },
+    {
+      "name": "Ram Kumar",
+      "age": 20,
+      "course": "Electronics",
+      "marks": 45,
+      "feesPaid": true
+    },
+    {
+      "name": "Keerthy",
+      "age": 21,
+      "course": "Engineering Maths",
+      "marks": 87,
+      "feesPaid": true
+    },
+    {
+      "name": "Kamal Hassan",
+      "age": 22,
+      "course": "Computer Science",
+      "marks": 68,
+      "feesPaid": true
+    },
+    {
+      "name": "Ranjini Kanth",
+      "age": 23,
+      "course": "Engineering Physics",
+      "marks": 92,
+      "feesPaid": false
+    },
+    {
+      "name": "Vijaya Kanth",
+      "age": 24,
+      "course": "Engineering Chemistry",
+      "marks": 53,
+      "feesPaid": true
+    },
+    {
+      "name": "Vijay Kumar",
+      "age": 20,
+      "course": "Environmental Science",
+      "marks": 75,
+      "feesPaid": false
+    },
+    {
+      "name": "Shankar",
+      "age": 22,
+      "course": "Literature",
+      "marks": 89,
+      "feesPaid": true
+    },
+    {
+      "name": "KS Ravi Kumar",
+      "age": 23,
+      "course": "Biochemistry",
+      "marks": 96,
+      "feesPaid": false
+    },
+    {
+      "name": "Siva Karthikeyan",
+      "age": 21,
+      "course": "Computer Science",
+      "marks": 34,
+      "feesPaid": true
+    },
+    {
+      "name": "Dhoni",
+      "age": 19,
+      "course": "Electronics",
+      "marks": 82,
+      "feesPaid": true
+    },
+    {
+      "name": "Virat Kohli",
+      "age": 20,
+      "course": "Engineering Maths",
+      "marks": 71,
+      "feesPaid": true
+    },
+    {
+      "name": "Rohit",
+      "age": 22,
+      "course": "Engi. Physics",
+      "marks": 46,
+      "feesPaid": false
+    },
+    {
+      "name": "Sachin",
+      "age": 24,
+      "course": "Engineering Chemistry",
+      "marks": 78,
+      "feesPaid": true
+    },
+    {
+      "name": "Kapil Dev",
+      "age": 23,
+      "course": "Environmental Science",
+      "marks": 99,
+      "feesPaid": false
+    },
+    {
+      "name": "Bumrah",
+      "age": 21,
+      "course": "Literature",
+      "marks": 91,
+      "feesPaid": true
+    },
+    {
+      "name": "Shikhar Dhawan",
+      "age": 20,
+      "course": "Computer Science",
+      "marks": 64,
+      "feesPaid": false
+    },
+    {
+      "name": "R Ashwin",
+      "age": 22,
+      "course": "Biochemistry",
+      "marks": 48,
+      "feesPaid": true
+    },
+    {
+      "name": "Jadeja",
+      "age": 21,
+      "course": "Computer Science",
+      "marks": 85,
+      "feesPaid": false
+    },
+    {
+      "name": "Rahul Dravid",
+      "age": 23,
+      "course": "Electronics",
+      "marks": 58,
+      "feesPaid": true
+    },
+    {
+      "name": "Anil Kumble",
+      "age": 24,
+      "course": "Engineering Maths",
+      "marks": 77,
+      "feesPaid": true
+    },
+    {
+      "name": "VVS Laxman",
+      "age": 19,
+      "course": "Engineering Physics",
+      "marks": 38,
+      "feesPaid": true
+    },
+    {
+      "name": "Hardik Pandya",
+      "age": 21,
+      "course": "Environmental Science",
+      "marks": 93,
+      "feesPaid": false
+    },
+    {
+      "name": "KL Rahul",
+      "age": 20,
+      "course": "Engineering Chemistry",
+      "marks": 83,
+      "feesPaid": true
+    },
+    {
+      "name": "Yuvraj Singh",
+      "age": 22,
+      "course": "Computer Science",
+      "marks": 55,
+      "feesPaid": false
+    }
+  ]
+  ```
+- **Response**: Creates multiple student records with auto-generated `id`.
+
+### 5. **PUT /students/{id}**
 
 - **Method**: PUT
 - **Endpoint**: `/students/{id}`
@@ -112,7 +305,7 @@ Select an endpoint you wish to test in Swagger and click "Try it out."
   ```
 - **Response**: Updates the student data with the specified ID.
 
-### 5. DELETE /students/{id}
+### 6. **DELETE /students/{id}**
 
 - **Method**: DELETE
 - **Endpoint**: `/students/{id}`
@@ -120,4 +313,29 @@ Select an endpoint you wish to test in Swagger and click "Try it out."
 
 ---
 
-This `README.md` provides clear instructions on setting up the project, running the API, and using Swagger to interact with the endpoints. It also includes details on configuring the database, testing the endpoints, and accessing the Swagger UI.
+## Additional API Endpoints
+
+1. **GET /students/marks/lesserthan/{mark}**
+   - **Method**: GET
+   - **Endpoint**: `/students/marks/lesserthan/{mark}`
+   - **Response**: Fetches student who scored less than specified mark(strictly lesser).
+
+2. **GET /students/marks/greaterthan/{mark}**
+   - **Method**: GET
+   - **Endpoint**: `/students/marks/greaterthan/{mark}`
+   - **Response**: Fetches student who scored more than specified mark(strictly greater).
+
+3. **GET /students/marks/between/{minMark}/{maxMark}**
+   - **Method**: GET
+   - **Endpoint**: `/students/marks/between/{minMark}/{maxMark}`
+   - **Response**: Fetches student who scored between minMark and maxMark.
+
+4. **GET /students/fees/paid**
+   - **Method**: GET
+   - **Endpoint**: `/students/fees/paid`
+   - **Response**: Fetches student who has paid fees.
+
+5. **GET /students/fees/notpaid**
+   - **Method**: GET
+   - **Endpoint**: `/students/fees/notpaid`
+   - **Response**: Fetches student who has not paid fees.
