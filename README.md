@@ -119,6 +119,92 @@ Here are some of the available API endpoints:
 - **Method**: DELETE
 - **Endpoint**: `/students/{id}`
 
+
+
+
+# API Testing Endpoints
+
+This API allows for the management of student profiles, including retrieval, creation, updating, and deletion. Below are the endpoints available for testing, along with example requests and expected responses.
+
+---
+
+## 1. Get All Students
+
+**Method:** GET  
+**Endpoint:** `http://localhost:8080/students`  
+**Response:** A list of all students in the database, with each student record containing the following fields:  
+- `id` (auto-generated)
+- `name`
+- `age`
+- `course`
+- `marks`
+- `feesPaid`
+
+**Copy Endpoint**: `http://localhost:8080/students`
+
+---
+
+## 2. Get Student by ID
+
+**Method:** GET  
+**Endpoint:** `http://localhost:8080/students/{id}`  
+**Response:** Details of a specific student identified by their `id`, including the `name`, `age`, `course`, `marks`, and `feesPaid` columns.
+
+**Copy Endpoint**: `http://localhost:8080/students/{id}`
+
+---
+
+## 3. Add New Student
+
+**Method:** POST  
+**Endpoint:** `http://localhost:8080/students`  
+**Request Body Example:**
+```json
+{
+  "name": "John Doe",
+  "age": 20,
+  "course": "Computer Science",
+  "marks": 80,
+  "feesPaid": 5000
+}
+```
+**Response:** The newly created student record with an auto-generated `id`.
+
+**Copy Endpoint**: `http://localhost:8080/students`
+
+---
+
+## 4. Update Student Data
+
+**Method:** PUT  
+**Endpoint:** `http://localhost:8080/students/{id}`  
+**Request Body Example:**
+```json
+{
+  "name": "John Doe Updated",
+  "age": 21,
+  "course": "Computer Science",
+  "marks": 90,
+  "feesPaid": 5500
+}
+```
+**Response:** The updated student record.
+
+**Copy Endpoint**: `http://localhost:8080/students/{id}`
+
+---
+
+## 5. Delete Student
+
+**Method:** DELETE  
+**Endpoint:** `http://localhost:8080/students/{id}`  
+**Response:** Confirmation of the deletion of the specified student profile.
+
+**Copy Endpoint**: `http://localhost:8080/students/{id}`
+
+--- 
+
+Each endpoint should be tested individually to ensure proper CRUD functionality.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
