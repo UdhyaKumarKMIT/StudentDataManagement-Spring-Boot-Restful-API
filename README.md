@@ -1,4 +1,4 @@
-# **Student Data Management API** using Sprint Boot with Swagger UI
+# **Student Data Management API** using Spring Boot with Swagger UI
 
 ---
 
@@ -37,14 +37,12 @@ This project provides a simple RESTful API for managing student profiles, marks,
 
 ### Step 1: Clone the Repository
 
-Clone the repository using the following Git command:
-
 ```bash
 git clone https://github.com/your-username/student-data-management-api.git
 ```
 
 ### Step 2: Check if your JDK version is suitable for the running the  project
-if not upgrade your JDK 
+if not upgrade your JDK to JDK 23
 
 
 ### Step 3: Run the Application
@@ -73,14 +71,7 @@ Once the application is running, you can open the Swagger UI to see and test all
 
 ### Step 6: Testing Endpoints
 
-Select Endpoint which you want to test and click Try this , provide the inputs and click execute.
-
-Swagger UI provides a simple interface to test the API. You can click on any endpoint to expand it and see options to:
-
-- **Execute**: Send a request to the endpoint.
-- **Copy**: Copy the cURL command to run the request from a terminal.
-
-Here are some sample endpoints that you can test:
+Select Endpoint which you want to test and click Try this , provide the inputs and click Try this.
 
 - **GET /students**: Retrieve all students.
 - **POST /students**: Create a new student profile.
@@ -89,22 +80,21 @@ Here are some sample endpoints that you can test:
 - **DELETE /students/{id}**: Delete a student profile.
 
 
-## Example Endpoints
+# API Testing Endpoints
+---
 
-Here are some of the available API endpoints:
-
-### 1. Get All Students
+### 1. GET/students
 
 - **Method**: GET
 - **Endpoint**: `/students`
 - **Response**: List of all students in the database.
 
-### 2. Get Student by ID
+### 2. GET /students/{id}
 
 - **Method**: GET
 - **Endpoint**: `/students/{id}`
-- **Response**: A specific student by ID.
-
+- **Response**:Retrieve a specific student by id
+  
 ### 3. Add New Student
 
 - **Method**: POST
