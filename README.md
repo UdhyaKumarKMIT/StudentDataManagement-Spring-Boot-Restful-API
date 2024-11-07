@@ -121,6 +121,7 @@ http://localhost:8080/swagger-ui/index.html
 ```
 
 This will open an interactive Swagger UI page with all available endpoints.
+Note : Click Execute button once and verify the output.
 
 ---
 
