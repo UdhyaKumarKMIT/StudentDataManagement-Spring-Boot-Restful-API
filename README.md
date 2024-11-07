@@ -32,17 +32,26 @@ This project provides a simple RESTful API for managing student profiles, marks,
 - Spring Boot
 - Swagger UI
 
+## Student Data Fields
+
+  - `id` (auto-generated int)     Unique Id
+- `name`  string                  Not Null and Not blank
+- `age`    int                    Non-negative
+- `course` string                 Not Null
+- `marks` int                     Between 0 and 100 (incl)
+- `feesPaid`  boolean             valid boolean
+
 ## Setup and Run
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/student-data-management-api.git
+git clone https://github.com/UdhyaKumarKMIT/StudentDataManagement-Spring-Boot-Restful-API.git
 ```
 
 ### Step 2: Check if your JDK version is suitable for the running the  project
-if not upgrade your JDK to JDK 23
-
+if not upgrade your JDK to JDK 23 and Spring Boot version V3.3.5.
+Ensure that you have all dependencies installed
 
 ### Step 3: Run the Application
 
@@ -56,21 +65,20 @@ mvn spring-boot:run
 
 The application will start, and you can access the API and Swagger UI at:
 
-```
-http://localhost:8080/swagger-ui/index.html
-```
+
 
 ### Step 5: Access Swagger UI
 
 Once the application is running, you can open the Swagger UI to see and test all the available endpoints:
 
 1. Open a web browser.
-2. Type `http://localhost:8080/swagger-ui/index.html`.
+2. Enter  ```bash
+http://localhost:8080/swagger-ui/index.html```
 3. You should see an interactive Swagger UI page with all available endpoints listed.
 
 ### Step 6: Testing Endpoints
 
-Select Endpoint which you want to test and click Try this , provide the inputs and click Try this.
+Select Endpoint which you want to test and click Try this .
 
 - **GET /students**: Retrieve all students.
 - **POST /students**: Create a new student profile.
@@ -80,7 +88,6 @@ Select Endpoint which you want to test and click Try this , provide the inputs a
 
 # API Testing Endpoints
 ---
-
 
 ### 1. GET/students
 
@@ -107,7 +114,7 @@ Select Endpoint which you want to test and click Try this , provide the inputs a
   "marks": 100,
   "feesPaid": true
 }
-  ``
+  ``**Response:** New Student record is created with an auto-generated `id`.
 ### 4. Update Student Data
 
 - **Method**: PUT
@@ -127,96 +134,8 @@ Select Endpoint which you want to test and click Try this , provide the inputs a
 
 - **Method**: DELETE
 - **Endpoint**: `/students/{id}`
+- **Response**: Delete the student with specific id.
 
-
-
-
-# API Testing Endpoints
-
-This API allows for the management of student profiles, including retrieval, creation, updating, and deletion. Below are the endpoints available for testing, along with example requests and expected responses.
-
----
-
-## 1. Get All Students
-
-**Method:** GET  
-**Endpoint:** `http://localhost:8080/students`  
-**Response:** A list of all students in the database, with each student record containing the following fields:  
-- `id` (auto-generated)
-- `name`
-- `age`
-- `course`
-- `marks`
-- `feesPaid`
-
-**Copy Endpoint**: `http://localhost:8080/students`
-
----
-
-## 2. Get Student by ID
-
-**Method:** GET  
-**Endpoint:** `http://localhost:8080/students/{id}`  
-**Response:** Details of a specific student identified by their `id`, including the `name`, `age`, `course`, `marks`, and `feesPaid` columns.
-
-**Copy Endpoint**: `http://localhost:8080/students/{id}`
-
----
-
-## 3. Add New Student
-
-**Method:** POST  
-**Endpoint:** `http://localhost:8080/students`  
-**Request Body Example:**
-```json
-{
-  "name": "John Doe",
-  "age": 20,
-  "course": "Computer Science",
-  "marks": 80,
-  "feesPaid": 5000
-}
-```
-**Response:** The newly created student record with an auto-generated `id`.
-
-**Copy Endpoint**: `http://localhost:8080/students`
-
----
-
-## 4. Update Student Data
-
-**Method:** PUT  
-**Endpoint:** `http://localhost:8080/students/{id}`  
-**Request Body Example:**
-```json
-{
-  "name": "John Doe Updated",
-  "age": 21,
-  "course": "Computer Science",
-  "marks": 90,
-  "feesPaid": 5500
-}
-```
-**Response:** The updated student record.
-
-**Copy Endpoint**: `http://localhost:8080/students/{id}`
-
----
-
-## 5. Delete Student
-
-**Method:** DELETE  
-**Endpoint:** `http://localhost:8080/students/{id}`  
-**Response:** Confirmation of the deletion of the specified student profile.
-
-**Copy Endpoint**: `http://localhost:8080/students/{id}`
-
---- 
-
-Each endpoint should be tested individually to ensure proper CRUD functionality.
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
