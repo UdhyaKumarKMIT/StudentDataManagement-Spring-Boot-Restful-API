@@ -101,12 +101,13 @@ Select Endpoint which you want to test and click Try this , provide the inputs a
 - **Request Body**:
   ```json
   {
-    "name": "John Doe",
-    "marks": 80,
-    "fees": 5000
-  }
-  ```
-
+  "name": "Udhya Kumar K",
+  "age": 19,
+  "course": "Computer Science",
+  "marks": 100,
+  "feesPaid": true
+}
+  ``
 ### 4. Update Student Data
 
 - **Method**: PUT
@@ -114,10 +115,12 @@ Select Endpoint which you want to test and click Try this , provide the inputs a
 - **Request Body**:
   ```json
   {
-    "name": "John Doe Updated",
-    "marks": 90,
-    "fees": 5500
-  }
+  "name": "Vijay Kumar ",
+  "age": 49,
+  "course": "Electronics",
+  "marks": 98,
+  "feesPaid": true
+}
   ```
 
 ### 5. Delete Student
