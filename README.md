@@ -32,14 +32,64 @@ This project provides a simple RESTful API for managing student profiles, marks,
 
 ## Student Data Fields
 
-- `id` (auto-generated int): Unique ID
+- `id` (auto-generated int)
 - `name` (string): Not null and not blank
 - `age` (int): Non-negative
 - `course` (string): Not null
-- `marks` (int): Between 0 and 100 (inclusive)
+- `marks` (Double): Between 0 and 100 (inclusive)
 - `feesPaid` (boolean): Valid boolean
 
+## Validation and Exception Handling
+
+### Validation Rules
+The `Student` entity is created with field-level validation annotations to ensure data integrity,
+
+- **Name**: 
+  - Cannot be `null` (`@NotNull`).
+  - Must have at least one character (`@Size(min = 1)`).
+
+- **Age**: 
+  - Must be a Non-negative (`@Positive`).
+
+- **Course**: 
+  - Cannot be `null` (`@NotNull`).
+
+- **Marks**:
+  - Must be a non-negative value (`@Min(value = 0)`).
+  - Cannot exceed 100 (`@Max(value = 100)`).
+
+
+When a request violates any of these validation rules, a `MethodArgumentNotValidException` is thrown. This exception is handled globally in the `GlobalExceptionHandler`, which formats the validation errors into a structured JSON response. Error messages are displayed in Swagger UI.
+
+### Exception Handling
+The `GlobalExceptionHandler` class implements centralized exception handling. This setup ensures that both validation errors and  custom exceptions are communicated effectively to Swagger UI. 
+
+1. **StudentNotFoundException**:
+   - Thrown when a requested student is not found 
+   - Returns an HTTP `404 Not Found` response with message Student with id {id} is not present.
+
+2. **StudentCreationException**:
+   - Thrown when student creation fails.
+   - Returns an HTTP `400 Bad Request` response with error message.
+
+3. **StudentDeletionException**:
+   - Thrown when a deletion attempt fails.
+   - Returns an HTTP `400 Bad Request` response with a error message : Failed to delete Student. Student with ID {id} does not exist.
+
+4. **MethodArgumentNotValidException**:
+   - Thrown when validation of fields fails (e.g., due to `@NotNull`, `@Size`, `@Min`, `@Max` constraints).
+   - Collects all validation error messages and returns them in a structured JSON format with an HTTP `400 Bad Request` status.
+
+   ```json
+   {
+     "name": "Name cannot be null",
+     "age": "Age must be a positive integer"
+     "mark": "Marks must be non-negative or Marks can not exceed 100"
+   }
+   ```
+
 ---
+
 
 ## Setup and Run
 
