@@ -1,12 +1,15 @@
 package com.StudentDataManagement.StudentDataManagement.StudentService;
-
+import com.StudentDataManagement.StudentDataManagement.Exception.*;
 import com.StudentDataManagement.StudentDataManagement.Entity.Student;
 import com.StudentDataManagement.StudentDataManagement.Repository.StudentRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -23,11 +26,23 @@ public class StudentService {
     }
 
     public Optional<Student> getStudentById(Integer id) {
-        return studentRepository.findById(id);
+        Optional<Student> student=studentRepository.findById(id);
+        if(!student.isPresent())
+        {
+            throw new StudentNotFoundException("Student with id "+id+" is not present ");
+        }
+       return student;
+
+
     }
 
+
     public Student addStudent(Student student) {
-        return studentRepository.save(student);
+        try {
+            return studentRepository.save(student);
+        } catch (Exception e) {
+            throw new StudentCreationException("Error occurred while creating the student record.");
+        }
     }
 
     public List<Student> addStudents(List<Student> students) {
@@ -35,23 +50,31 @@ public class StudentService {
     }
 
     public Optional<Student> updateStudent(Integer id, Student updatedStudent) {
-        return studentRepository.findById(id).map(student -> {
-            student.setName(updatedStudent.getName());
-            student.setAge(updatedStudent.getAge());
-            student.setCourse(updatedStudent.getCourse());
-            student.setMarks(updatedStudent.getMarks());
-            student.setFeesPaid(updatedStudent.getFeesPaid());
-            return studentRepository.save(student);
-        });
+        Optional<Student> student = studentRepository.findById(id);
+        if (!student.isPresent()) {
+            throw new StudentNotFoundException("Student with id " + id + " is not present");
+        }
+
+        student.get().setName(updatedStudent.getName());
+        student.get().setAge(updatedStudent.getAge());
+        student.get().setCourse(updatedStudent.getCourse());
+        student.get().setMarks(updatedStudent.getMarks());
+        student.get().setFeesPaid(updatedStudent.getFeesPaid());
+
+
+        return Optional.of(studentRepository.save(student.get()));
     }
+
 
     public boolean deleteStudent(Integer id) {
         if (studentRepository.existsById(id)) {
             studentRepository.deleteById(id);
             return true;
+        } else {
+            throw new StudentDeletionException("Failed to delete Student. Student with ID " + id + " does not exist.");
         }
-        return false;
     }
+
 
     public List<Student> getStudentsByMarkGreaterThan(double mark) {
         return studentRepository.findByMarksGreaterThan(mark);
@@ -71,5 +94,20 @@ public class StudentService {
 
     public List<Student> getStudentByNotPaid() {
         return studentRepository.findByFeesPaidFalse();
+    }
+
+    public List<Student> getStudentsByCourse(String course) {
+        return studentRepository.findByCourse(course);
+    }
+
+    public List<Student> getTopRankers(int n) {
+
+        List<Student> students = studentRepository.findAll();
+
+
+        return students.stream()
+                .sorted((s1, s2) -> Double.compare(s2.getMarks(), s1.getMarks())) // Sorting in descending order
+                .limit(n) // Limit to top n
+                .collect(Collectors.toList()); // Collect the result into a list
     }
 }

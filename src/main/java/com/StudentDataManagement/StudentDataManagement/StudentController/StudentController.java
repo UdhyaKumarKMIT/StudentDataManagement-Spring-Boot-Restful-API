@@ -1,7 +1,9 @@
 package com.StudentDataManagement.StudentDataManagement.StudentController;
 
+import com.StudentDataManagement.StudentDataManagement.Exception.StudentNotFoundException;
 import com.StudentDataManagement.StudentDataManagement.StudentService.StudentService;
 import com.StudentDataManagement.StudentDataManagement.Entity.Student;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -35,23 +38,24 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> addStudent(@Valid @RequestBody Student student) {
         Student createdStudent = studentService.addStudent(student);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdStudent);
     }
 
     @PostMapping("/bulk")
-    public ResponseEntity<List<Student>> addStudents(@RequestBody List<Student> students) {
+    public ResponseEntity<List<Student>> addStudents(@Valid @RequestBody List<Student> students) {
         List<Student> addedStudents = studentService.addStudents(students);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedStudents);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable Integer id, @RequestBody Student updatedStudent) {
+    public ResponseEntity<Student> updateStudent(@PathVariable Integer id, @Valid @RequestBody Student updatedStudent) {
         Optional<Student> student = studentService.updateStudent(id, updatedStudent);
         return student.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Integer id) {
@@ -86,4 +90,39 @@ public class StudentController {
     public ResponseEntity<List<Student>> getStudentByNotPaid() {
         return ResponseEntity.ok(studentService.getStudentByNotPaid());
     }
+
+    @GetMapping("/courses/{course}")
+    public ResponseEntity<List<Student>> getStudentsByCourse(@PathVariable String course) {
+
+        List<Student> students = studentService.getStudentsByCourse(course);
+
+        if (students.isEmpty()) {
+            throw new StudentNotFoundException("No Student is learning this course : "+course);
+        }
+
+        return ResponseEntity.ok(students);
+    }
+
+
+    @GetMapping("/courses")
+    public ResponseEntity<List<String>> getUniqueCourses() {
+        List<Student> students = studentService.getAllStudents();
+        List<String> uniqueCourses = new ArrayList<>();
+
+        for (Student student : students) {
+            String course = student.getCourse();
+            if (course != null && !course.isEmpty() && !uniqueCourses.contains(course)) {
+                uniqueCourses.add(course);
+            }
+        }
+
+        return ResponseEntity.ok(uniqueCourses);
+    }
+
+    @GetMapping("/top/{n}")
+    public ResponseEntity<List<Student>> getTopRankers(@PathVariable int n) {
+        List<Student> topRankers = studentService.getTopRankers(n);
+        return ResponseEntity.ok(topRankers);
+    }
+
 }
