@@ -17,7 +17,7 @@ This project provides a simple RESTful API for managing student profiles, marks,
 
 ## Prerequisites
 - **Java Version**: 1.8.0_401
-- **JDK Version**: 23
+- **JDK Version**: openjdk-23
 - **Spring Boot Version**: v3.3.5
 - **IDE**: IntelliJ IDEA
 
