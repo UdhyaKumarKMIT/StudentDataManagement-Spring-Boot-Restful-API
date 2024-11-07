@@ -1,11 +1,10 @@
 # **Student Data Management API** using Spring Boot with Swagger UI
----
+
 
 ## Description
 
 This project provides a simple RESTful API for managing student profiles, marks, and fees. It uses Spring Boot for the backend and integrates **Swagger UI** for easy API documentation and testing.
 
----
 
 ## Developer
 
@@ -18,7 +17,7 @@ This project provides a simple RESTful API for managing student profiles, marks,
 ✉️ **Email**: udhyak2004@gmail.com  
 📞 **Phone**: +91 9150653370
 
----
+-
 
 ## Prerequisites
 - **Java Version**: 1.8.0_401
