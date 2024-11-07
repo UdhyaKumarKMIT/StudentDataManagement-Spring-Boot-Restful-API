@@ -4,7 +4,7 @@ This project provides a simple RESTful API for managing student profiles, marks,
 
 ## Developer 👨‍💻
 
-👨‍💻 **Developer**: Udhya Kumar K (2022503051)
+👨‍💻 **Developer**: Udhya Kumar K (2022503051)      
 🏢 **Department**: Department of Computer Technology  
 
 🌐 **View my profile**: [UdhyaKumarKMIT](https://github.com/UdhyaKumarKMIT)  
