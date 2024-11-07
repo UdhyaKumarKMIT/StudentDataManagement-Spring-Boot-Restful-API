@@ -5,10 +5,10 @@
 This project provides a simple RESTful API for managing student profiles, marks, and fees. It uses Spring Boot for the backend and integrates **Swagger** for API documentation and testing.
 
 ## Prerequisites
-
+- **Java Version**: 1.8.0_401
 - **JDK Version**: 11 or later
-- **Spring Boot Version**: 2.x (preferably 2.7.x or later)
-- **IDE**: IntelliJ IDEA or any IDE that supports Java development.
+- **Spring Boot Version**: v3.3.5
+- **IDE**: IntelliJ IDEA .
 
 ## Technologies Used
 
@@ -26,9 +26,8 @@ Clone the repository using the following Git command:
 git clone https://github.com/your-username/student-data-management-api.git
 ```
 
-### Step 2: Check if your JDK version is {}  for the project
+### Step 2: Check if your JDK version is suitable for the running the  project
 if not upgrade your JDK 
-```
 
 
 ### Step 3: Run the Application
