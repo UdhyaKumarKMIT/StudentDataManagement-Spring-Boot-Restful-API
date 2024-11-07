@@ -4,7 +4,7 @@ This project provides a simple RESTful API for managing student profiles, marks,
 
 ## Developer 👨‍💻
 
-👨‍💻 **Developer**: Udhya Kumar K.  
+👨‍💻 **Developer**: Udhya Kumar K (2022503051)
 🏢 **Department**: Department of Computer Technology  
 
 🌐 **View my profile**: [UdhyaKumarKMIT](https://github.com/UdhyaKumarKMIT)  
@@ -116,14 +116,15 @@ The application will start running ...
 
 Once the application is running, open a web browser and enter:
 
-```http://localhost:8080/swagger-ui/index.html```
+```bash
+http://localhost:8080/swagger-ui/index.html
+```
 
 This will open an interactive Swagger UI page with all available endpoints.
 
 ---
 
 ## API Endpoints
----
 
 ### 1. **GET /students**
 
