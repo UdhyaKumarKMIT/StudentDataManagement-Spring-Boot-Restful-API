@@ -138,7 +138,14 @@ This will open an interactive Swagger UI page with all available endpoints.
 - **Endpoint**: `/students/{id}`
 - **Response**: Retrieves a specific student by ID.
 
-### 3. **POST /students**
+### 3. **GET /students/courses/{course}**
+
+- **Method**: GET
+- **Endpoint**: `/students/courses/{course}`
+- **Response**: Retrieves Student Studing a specific course
+
+
+### 4. **POST /students**
 
 - **Method**: POST
 - **Endpoint**: `/students`
@@ -154,7 +161,7 @@ This will open an interactive Swagger UI page with all available endpoints.
   ```
 - **Response**: Creates a new student record with an auto-generated `id`.
 
-### 4. **POST /students/bulk**
+### 5. **POST /students/bulk**
 
 - **Method**: POST
 - **Endpoint**: `/students/bulk`
@@ -340,7 +347,7 @@ This will open an interactive Swagger UI page with all available endpoints.
   ```
 - **Response**: Creates multiple student records with auto-generated `id`.
 
-### 5. **PUT /students/{id}**
+### 6. **PUT /students/{id}**
 
 - **Method**: PUT
 - **Endpoint**: `/students/{id}`
@@ -356,7 +363,7 @@ This will open an interactive Swagger UI page with all available endpoints.
   ```
 - **Response**: Updates the student data with the specified ID.
 
-### 6. **DELETE /students/{id}**
+### 7. **DELETE /students/{id}**
 
 - **Method**: DELETE
 - **Endpoint**: `/students/{id}`
