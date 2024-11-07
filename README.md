@@ -1,7 +1,3 @@
-Here's an aligned and structured version of your `README.md` content:
-
----
-
 # **Student Data Management API** using Spring Boot with Swagger UI
 
 This project provides a simple RESTful API for managing student profiles, marks, and fees. It uses Spring Boot for the backend and integrates **Swagger UI** for easy API documentation and testing.
@@ -11,8 +7,8 @@ This project provides a simple RESTful API for managing student profiles, marks,
 👨‍💻 **Developer**: Udhya Kumar K.  
 🏢 **Department**: Department of Computer Technology  
 
-**View my profile**: [UdhyaKumarKMIT](https://github.com/UdhyaKumarKMIT)  
-**Leetcode**: [udhyak2004](https://leetcode.com/u/udhyak2004/)  
+🌐**View my profile**: [UdhyaKumarKMIT](https://github.com/UdhyaKumarKMIT)  
+💻**Leetcode**: [udhyak2004](https://leetcode.com/u/udhyak2004/)  
 
 ✉️ **Email**: udhyak2004@gmail.com  
 📞 **Phone**: +91 9150653370
