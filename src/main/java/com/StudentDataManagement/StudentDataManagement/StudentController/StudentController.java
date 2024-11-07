@@ -1,5 +1,6 @@
 package com.StudentDataManagement.StudentDataManagement.StudentController;
 
+import com.StudentDataManagement.StudentDataManagement.Exception.StudentNotFoundException;
 import com.StudentDataManagement.StudentDataManagement.StudentService.StudentService;
 import com.StudentDataManagement.StudentDataManagement.Entity.Student;
 import jakarta.validation.Valid;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -54,6 +56,7 @@ public class StudentController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Integer id) {
         if (studentService.deleteStudent(id)) {
@@ -87,4 +90,39 @@ public class StudentController {
     public ResponseEntity<List<Student>> getStudentByNotPaid() {
         return ResponseEntity.ok(studentService.getStudentByNotPaid());
     }
+
+    @GetMapping("/courses/{course}")
+    public ResponseEntity<List<Student>> getStudentsByCourse(@PathVariable String course) {
+
+        List<Student> students = studentService.getStudentsByCourse(course);
+
+        if (students.isEmpty()) {
+            throw new StudentNotFoundException("No Student is learning this course : "+course);
+        }
+
+        return ResponseEntity.ok(students);
+    }
+
+
+    @GetMapping("/courses")
+    public ResponseEntity<List<String>> getUniqueCourses() {
+        List<Student> students = studentService.getAllStudents();
+        List<String> uniqueCourses = new ArrayList<>();
+
+        for (Student student : students) {
+            String course = student.getCourse();
+            if (course != null && !course.isEmpty() && !uniqueCourses.contains(course)) {
+                uniqueCourses.add(course);
+            }
+        }
+
+        return ResponseEntity.ok(uniqueCourses);
+    }
+
+    @GetMapping("/top/{n}")
+    public ResponseEntity<List<Student>> getTopRankers(@PathVariable int n) {
+        List<Student> topRankers = studentService.getTopRankers(n);
+        return ResponseEntity.ok(topRankers);
+    }
+
 }

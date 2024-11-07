@@ -4,10 +4,12 @@ import com.StudentDataManagement.StudentDataManagement.Entity.Student;
 import com.StudentDataManagement.StudentDataManagement.Repository.StudentRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -92,5 +94,20 @@ public class StudentService {
 
     public List<Student> getStudentByNotPaid() {
         return studentRepository.findByFeesPaidFalse();
+    }
+
+    public List<Student> getStudentsByCourse(String course) {
+        return studentRepository.findByCourse(course);
+    }
+
+    public List<Student> getTopRankers(int n) {
+
+        List<Student> students = studentRepository.findAll();
+
+
+        return students.stream()
+                .sorted((s1, s2) -> Double.compare(s2.getMarks(), s1.getMarks())) // Sorting in descending order
+                .limit(n) // Limit to top n
+                .collect(Collectors.toList()); // Collect the result into a list
     }
 }
