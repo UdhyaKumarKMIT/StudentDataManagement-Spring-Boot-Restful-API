@@ -347,7 +347,7 @@ This will open an interactive Swagger UI page with all available endpoints.
 - **Request Body**:
   ```json
   {
-    "name": "Vijay Kumar",
+    "name": "Shankar",
     "age": 49,
     "course": "Electronics",
     "marks": 98,
@@ -369,7 +369,7 @@ This will open an interactive Swagger UI page with all available endpoints.
 1. **GET /students/top/{n}**
    - **Method**: GET
    - **Endpoint**: `/students/top/{n}`
-   - **Response**: Fetches Top n scorers.
+   - **Response**: Fetches Top n High Scorers.
 
 2. **GET /students/marks/lesserthan/{mark}**
    - **Method**: GET
@@ -396,8 +396,8 @@ This will open an interactive Swagger UI page with all available endpoints.
    - **Endpoint**: `/students/fees/notpaid`
    - **Response**: Fetches student who has not paid fees.
 
-7. **GET /students/course**
+7. **GET /students/courses**
    - **Method**: GET
-   - **Endpoint**: `/students/course`
+   - **Endpoint**: `/students/courses`
    - **Response**: Retrieves Unique list of courses.
 
