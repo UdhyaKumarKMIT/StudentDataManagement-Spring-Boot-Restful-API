@@ -2,7 +2,7 @@
 
 This project provides a simple RESTful API for managing student profiles, marks, and fees. It uses Spring Boot for the backend and integrates **Swagger UI** for easy API documentation and testing.
 
-## Developer 👨‍💻
+## Developer 🔥👾
 
 👨‍💻 **Developer**: Udhya Kumar K (2022503051)      
 🏢 **Department**: Department of Computer Technology  
