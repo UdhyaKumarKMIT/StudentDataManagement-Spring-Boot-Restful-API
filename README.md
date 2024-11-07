@@ -78,9 +78,9 @@ Select Endpoint which you want to test and click Try this , provide the inputs a
 - **PUT /students/{id}**: Update a student profile.
 - **DELETE /students/{id}**: Delete a student profile.
 
-
 # API Testing Endpoints
 ---
+
 
 ### 1. GET/students
 
