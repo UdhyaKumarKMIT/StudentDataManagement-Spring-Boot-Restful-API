@@ -1,5 +1,4 @@
 # **Student Data Management API** using Spring Boot with Swagger UI
-
 ---
 
 ## Description
