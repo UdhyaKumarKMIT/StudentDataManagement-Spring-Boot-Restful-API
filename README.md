@@ -409,3 +409,56 @@ Note : Click Execute button once and verify the output.
    - **Endpoint**: `/students/courses`
    - **Response**: Retrieves Unique list of courses.
 
+
+
+### **To Connect to Mysql Database **
+
+### **1. Replace `application.properties`**
+Replace your current `application.properties` file with the provided configuration. Make sure to use this:
+
+```properties
+# Database configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/student
+spring.datasource.username=root
+spring.datasource.password=root
+
+# Hibernate properties
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.show-sql=true
+
+# Debugging
+debug=true
+
+# Application properties
+spring.application.name=StudentDataManagement
+
+# Swagger configuration
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.api-docs.path=/v3/api-docs
+springdoc.swagger-ui.url=/v3/api-docs
+```
+
+---
+
+### **2. Create the MySQL Database**
+To ensure the database is ready:
+1. Open a terminal or command prompt.
+2. Run the following command to log into MySQL:
+   ```bash
+   mysql -u root -p -h localhost -P 3306
+   ```
+3. Once logged in, create the database:
+   ```sql
+   CREATE DATABASE student;
+   ```
+
+---
+
+### **3. Verify MySQL Connection**
+After creating the database:
+1. Ensure MySQL service is running.
+2. Verify the connection using the `spring.datasource.url`, `username`, and `password` provided in the `application.properties`.
+3. Optionally, run `SHOW DATABASES;` within MySQL to confirm that the `student` database exists if does not exist create student database.
+
+---
