@@ -4,8 +4,8 @@ This project provides a simple RESTful API for managing student profiles, marks,
 
 ## Developer 👨‍💻
 
-👨‍💻 **Developer**: Udhya Kumar K (2022503051)      
-🏢 **Department**: Department of Computer Technology  
+👨‍💻 **Developer**: Udhya Kumar K (2022503051)   
+🏢 **Department**: Department of Computer Technology, Madras Institute of Technology   
 
 🌐 **View my profile**: [UdhyaKumarKMIT](https://github.com/UdhyaKumarKMIT)  
 💻 **Leetcode**: [udhyak2004](https://leetcode.com/u/udhyak2004/)  
